@@ -1,11 +1,8 @@
 import argparse
 import subprocess
 import re
-import pprint
 import sys
 from wshare_config import config
-
-pp = pprint.PrettyPrinter().pprint
 
 def getConnDict():
     txt = subprocess.getoutput('net use')
@@ -63,7 +60,6 @@ def getAll():
 
 def printStatus(connList):
     i = 0
-    #pp(connList)
     for conn in connList:
         i += 1
         if conn['in_conf']:
@@ -83,14 +79,14 @@ def main(sel):
         print('')
     else:
         num = sel
-    
+
     if num == '' or num == '0': return False
-    
+
     conn = None
     for value in conns:
         if value['in_conf'] and value['in_conf'] == num:
             conn = value
-    
+
     if conn is None:
         try:
             num = int(num)
@@ -102,7 +98,7 @@ def main(sel):
 
     if sel:
         print('Reconnecting ' + sel + '...')
-            
+
     if conn['drive_letter']:
         subprocess.getoutput('net use ' + conn['drive_letter'] + ' /delete')
     subprocess.getoutput('net use ' + conn['path'] + ' /delete')
@@ -113,7 +109,7 @@ def main(sel):
         '/user:' + conn['username'] + ' ' +
         '"' + conn['password'] + '"'
     )
-    
+
     if not sel is None:
         input('Press ENTER to continue.')
         return False
@@ -127,7 +123,6 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
-#pp(args)
 
 while True:
     if not main(args.selection): break
