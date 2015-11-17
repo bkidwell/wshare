@@ -3,7 +3,6 @@
 import argparse
 import subprocess
 import re
-import sys
 from wshare_config import config
 
 def getConnDict():
