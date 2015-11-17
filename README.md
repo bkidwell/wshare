@@ -15,7 +15,7 @@ I wrote this tool because I have a problem with my Windows File Sharing (SMB / C
 
 ## Installation
 
-1. Copy `wshare.py` to a path in your `%PATH%` environment variable. (For example, you could create a `C:\bin` folder and [edit your %PATH% variable](http://www.digitalcitizen.life/how-edit-or-delete-environment-variables-windows-7-windows-8).
+1. Copy `wshare.py` to a path in your `%PATH%` environment variable. (For example, you could create a `C:\bin` folder and [edit your %PATH% variable](http://www.digitalcitizen.life/how-edit-or-delete-environment-variables-windows-7-windows-8) so it contains `C:\bin`.)
 
 2. If you have more than one Python installed, you should probably create a `wshare.cmd` file in the same folder with something like this:
 
