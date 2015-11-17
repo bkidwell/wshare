@@ -1,3 +1,5 @@
+# See https://github.com/bkidwell/wshare
+
 import argparse
 import subprocess
 import re
