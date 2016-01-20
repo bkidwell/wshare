@@ -16,7 +16,7 @@ def getConnDict():
         sys.exit()
     data = match.group(1).split('\n')
     data = [row for row in data if not re.match('^    ', row)]
-    data = [re.split(r' *', row) for row in data]
+    data = [re.split(r' +', row) for row in data]
     result = dict()
     for row in data:
         if len(row) < 2: continue
