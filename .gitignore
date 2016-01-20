@@ -2,3 +2,4 @@
 /*.sublime-workspace
 /wshare.cmd
 /wshare_config.py
+*.pyc
