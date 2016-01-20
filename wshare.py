@@ -3,14 +3,17 @@
 import argparse
 import subprocess
 import re
+import sys
 from wshare_config import config
 
 def getConnDict():
     txt = subprocess.getoutput('net use')
+    if re.search(r'There are no entries in the list\.', txt):
+        return dict()
     match = re.search(r'--------.*\n([\w\W]*?)The command completed', txt)
     if match is None:
         print("Can't parse 'net use' output.")
-        exit
+        sys.exit()
     data = match.group(1).split('\n')
     data = [row for row in data if not re.match('^    ', row)]
     data = [re.split(r' *', row) for row in data]
