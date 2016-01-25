@@ -51,7 +51,7 @@ def getAll():
         if skey in conns:
             conn = conns[skey]
             conn['username'] = value['username']
-            conn['password'] = value['password']
+            conn['password'] = value['password'] if 'password' in value else ''
             conn['drive_letter'] = conn['drive_letter'] or value['drive_letter']
             conn['in_conf'] = key
         else:
@@ -106,12 +106,13 @@ def main(sel):
     if conn['drive_letter']:
         subprocess.getoutput('net use ' + conn['drive_letter'] + ' /delete')
     subprocess.getoutput('net use ' + conn['path'] + ' /delete')
+    if not 'password' in conn: conn['password'] = ''
+    p = ' "' + conn['password'] + '"' if conn['password'] else ''
     subprocess.call(
         'net use ' +
         (conn['drive_letter'] if conn['drive_letter'] else '') + ' ' +
         conn['path'] + ' ' +
-        '/user:' + conn['username'] + ' ' +
-        '"' + conn['password'] + '"'
+        '/user:' + conn['username'] + p
     )
 
     if not sel is None:

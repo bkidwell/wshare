@@ -31,13 +31,13 @@ I wrote this tool because I have a problem with my Windows File Sharing (SMB / C
                 'drive_letter': 'N:',
                 'path': '//SERVER1.EXAMPLE.COM/PATH1',
                 'username': 'USER',
-                'password': 'PASSWORD',
+                'password': 'PASSWORD', # None, if not needed
             },
             'NAME2': {
                 'drive_letter': None,  # None for no drive letter; just connection
                 'path': '//SERVER2.EXAMPLE.COM/PATH2',
                 'username': 'USER',
-                'password': 'PASSWORD',
+                'password': 'PASSWORD', # None, if not needed
             },
         }
 
